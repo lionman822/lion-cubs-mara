@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src https://api.open-meteo.com; img-src 'self' data:">
+<title>狮子养成记</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">狮子养成记 <em>·</em> <span>恩提亚克河 · 隐藏期</span></div>
+    <div class="meta">
+      <span id="clock" title="游戏里所有时间都是肯尼亚内罗毕时间（EAT，UTC+3），和你所在的时区无关">内罗毕 --:--</span>
+      <span id="ffTag" class="ff-tag" style="display:none"></span>
+      <span id="wx" title="巢穴坐标 -1.3756446°, 35.1500665° · 马赛马拉 · 海拔约 1540 米">天气加载中…</span>
+      <span id="moon"></span>
+    </div>
+    <div class="winbtns">
+      <button id="btnSound" title="声音开关">🔊</button>
+      <button id="btnPin" title="窗口置顶">置顶</button>
+      <button id="btnMini" title="收起为小条">收起</button>
+      <button id="btnClose" title="关闭（进度自动保存，草原上的时间不会停）">✕</button>
+    </div>
+  </header>
+  <div class="beads"></div>
+
+  <div class="main">
+  <section class="radar-sec">
+    <div class="radar-tools">
+      <span class="radar-title">动态雷达</span>
+      <span class="daychip-phase" id="dayPhase"></span>
+      <span class="bird-cap" id="birdCap"></span>
+      <button data-r="1000">1 km</button><button data-r="2000" class="on">2 km</button><button data-r="3000">3 km</button>
+      <button id="btnRadarBig" class="ml">放大</button>
+    </div>
+    <canvas id="radar"></canvas>
+    <div class="radar-legend" id="radarLegend"></div>
+    <div class="radar-terrain">
+      <span><i style="background:#34452a"></i>草原</span><span><i style="background:#26391f"></i>灌丛</span><span><i style="background:#1b2c18"></i>河岸林地</span><span><i style="background:#3d86a3"></i>河流</span><span><i class="dash"></i>车辙路</span><span><i class="ring"></i>当前巢穴</span><span><i class="ring faint"></i>备选巢穴</span><span>巢穴 -1.3756°, 35.1501°</span>
+    </div>
+  </section>
+  <section class="panel">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="panel-head">
+      <div class="crumb"><span class="seal">狮</span> Naramat 一家 · 第 <b id="dayNum">1</b> / 56 天 <small id="modeTag"></small></div>
+      <div class="head-btns"><span class="morale" id="morale" title="巡护员士气：答对巡护站问答 +15，每小时约 −1。士气越高，巡护车发现牛群越远、跑得越快、劝离越快"></span><button id="btnCheckin" class="pill">签到守护</button></div>
+    </div>
+    <div class="decision" id="decision" style="display:none"></div>
+    <div class="quiz" id="quiz" style="display:none"></div>
+    <div class="radar-say" id="subtitle"></div>
+    <nav class="tabs">
+      <button data-tab="den" class="on"><span>🌿</span>巢穴</button>
+      <button data-tab="hunt"><span>🐾</span>捕猎</button>
+      <button data-tab="threat"><span>⚠️</span>威胁</button>
+      <button data-tab="talk"><span>💬</span>对话</button>
+      <button data-tab="diary"><span>📜</span>日记</button>
+      <button data-tab="medals"><span>🏅</span>勋章</button>
+    </nav>
+    <div class="tab-body">
+      <div class="act-line">正在 · <b id="actName">—</b> · <span id="actPct">0%</span><span id="actLeft"></span></div>
+      <div class="progress"><i id="actBar"></i></div>
+
+      <div class="pane on" id="pane-den"></div>
+      <div class="pane" id="pane-hunt"></div>
+      <div class="pane" id="pane-threat"></div>
+      <div class="pane" id="pane-talk"><div class="talk" id="talkList"></div></div>
+      <div class="pane" id="pane-medals"></div>
+      <div class="pane" id="pane-diary"><div class="diary" id="diaryList"></div><div class="diary-foot"><button id="btnRecap" class="link">昨日回顾</button> · <button id="btnReset" class="link">重新开始</button></div></div>
+    </div>
+    <div class="daybar" id="daybar"></div>
+  </section>
+  </div>
+  <div id="medalToast"></div>
+</div>
+
+<div id="mini">
+  <span class="seal">狮</span>
+  <span id="miniText">—</span>
+  <button id="btnExpand">展开</button>
+</div>
+
+<div id="modal" class="hidden"><div class="modal-card" id="modalCard"></div></div>
+
+<script src="data.js"></script>
+<script src="geo.js"></script>
+<script src="eco.js"></script>
+<script src="quiz.js"></script>
+<script src="sim.js"></script>
+<script src="medals.js"></script>
+<script src="weather.js"></script>
+<script src="radar.js"></script>
+<script src="sound.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

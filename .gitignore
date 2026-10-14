@@ -1,0 +1,8 @@
+# 依赖和打包产物（npm install / electron-packager 可重新生成）
+node_modules/
+dist/
+*.app/
+# 本地文件
+.DS_Store
+.claude/
+*.docx

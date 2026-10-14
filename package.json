@@ -1,0 +1,16 @@
+{
+  "name": "lion-cubs-mara",
+  "productName": "狮子养成记",
+  "version": "0.1.0",
+  "description": "桌面悬浮生态模拟小游戏：马赛马拉母狮 Naramat 的三个月隐藏期",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "calibrate": "node tools/calibrate.js 2000"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^33.2.0"
+  }
+}
